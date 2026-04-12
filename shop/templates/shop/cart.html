@@ -1,0 +1,17 @@
+<h1 style="text-align:center;">🛒 Your Cart</h1>
+
+{% for item in items %}
+<div style="border:1px solid #ddd; margin:10px; padding:10px;">
+    <h3>{{ item.product.name }}</h3>
+    <p>Quantity: {{ item.quantity }}</p>
+
+    <a href="{% url 'increase_quantity' item.id %}">➕</a>
+    <a href="{% url 'decrease_quantity' item.id %}">➖</a>
+</div>
+{% empty %}
+<p style="text-align:center;">Cart is empty</p>
+{% endfor %}
+
+<div style="text-align:center;">
+    <a href="/checkout/"><button>Checkout</button></a>
+</div>

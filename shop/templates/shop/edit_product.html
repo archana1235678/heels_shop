@@ -1,0 +1,18 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<div class="card p-4 shadow">
+    <h3>Edit Product</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" value="{{ product.name }}" class="form-control mb-2">
+        <input type="number" name="price" value="{{ product.price }}" class="form-control mb-2">
+        <input type="text" name="size" value="{{ product.size }}" class="form-control mb-2">
+        <input type="text" name="color" value="{{ product.color }}" class="form-control mb-2">
+        <textarea name="description" class="form-control mb-2">{{ product.description }}</textarea>
+
+        <button class="btn btn-warning">Update</button>
+    </form>
+</div>
+{% endblock %}

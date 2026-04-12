@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .cart-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 15px;
+            background: white;
+        }
+
+        .product-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .qty-btn {
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .plus {
+            background: #28a745;
+            color: white;
+        }
+
+        .minus {
+            background: #dc3545;
+            color: white;
+        }
+
+        .total-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .checkout-btn {
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+    <h2 class="mb-4">🛒 Your Cart</h2>
+
+    <div class="row">
+
+        <!-- LEFT SIDE CART ITEMS -->
+        <div class="col-md-8">
+
+            {% for item in items %}
+            <div class="cart-card mb-3 d-flex align-items-center justify-content-between">
+
+                <div class="d-flex align-items-center gap-3">
+
+                    {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" class="product-img">
+                    {% endif %}
+
+                    <div>
+                        <h5>{{ item.product.name }}</h5>
+                        <p class="mb-0">₹{{ item.product.price }}</p>
+                    </div>
+
+                </div>
+
+                <div class="d-flex align-items-center gap-2">
+
+                    <a href="/decrease/{{ item.id }}/" class="qty-btn minus">-</a>
+
+                    <span>{{ item.quantity }}</span>
+
+                    <a href="/increase/{{ item.id }}/" class="qty-btn plus">+</a>
+
+                </div>
+
+                <div>
+                    <b>₹{{ item.product.price|floatformat:2 }}</b>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- RIGHT SIDE SUMMARY -->
+        <div class="col-md-4">
+
+            <div class="total-box">
+
+                <h4>Price Details</h4>
+
+                <hr>
+
+                <h5>Total:</h5>
+                <h3 class="text-success">₹{{ total }}</h3>
+
+                <a href="/checkout/">
+                    <button class="checkout-btn mt-3">
+                        Proceed to Checkout
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

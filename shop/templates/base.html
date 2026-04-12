@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Shop</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .navbar {
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+        }
+
+        .navbar a {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .cart-badge {
+            background: black;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 8px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg px-3">
+    <a class="navbar-brand" href="/">🛍 Shop</a>
+
+    <div class="ms-auto">
+        <a href="/cart/" class="nav-link">
+            🛒 Cart
+            <span class="cart-badge">{{ cart_count }}</span>
+        </a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
