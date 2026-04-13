@@ -104,6 +104,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -113,4 +116,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 RAZORPAY_KEY_ID = "rzp_test_Sci1LpEvDxAh10"
 RAZORPAY_KEY_SECRET = "dgYEWYsnMWNkhQLb3yP8ug2k"
+
+ALLOWED_HOSTS = ["*"]
  
